@@ -29,7 +29,7 @@ describe("Embedding workflow", () => {
 
     const result = await worker.runUntil(
       client.workflow.execute(embedding, {
-        args: [{ text: "test text", apiKey: "key" }],
+        args: [{ text: "test text" }],
         workflowId: "test",
         taskQueue,
       })

@@ -1,9 +1,3 @@
-import "dotenv/config"
-const OpenAiApiKey: string = process.env.OPENAI_API_KEY || ""
-
-if (!OpenAiApiKey) {
-  throw new Error("OPENAI_API_KEY must be defined in the environment.")
-}
 import { Connection, Client } from "@temporalio/client"
 import { embedding } from "./workflows"
 import { nanoid } from "nanoid"
@@ -23,10 +17,12 @@ async function run() {
     // namespace: 'foo.bar', // connects to 'default' namespace if not specified
   })
 
+  const exampleArgumentText = "Sometimes, almost always"
+
   const embeddingGenerator = await client.workflow.start(embedding, {
     taskQueue: EmbeddingsQueue,
     // type inference works! args: [name: string]
-    args: [{text: "Sometimes, almost always", apiKey: OpenAiApiKey}],
+    args: [{ text: exampleArgumentText }],
     workflowId: "workflow-" + nanoid(),
   })
 

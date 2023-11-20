@@ -30,7 +30,7 @@ describe.skip("Example workflow with mocks", () => {
 
     const result = await worker.runUntil(
       client.workflow.execute(embedding, {
-        args: [{ text: "test text", apiKey: "key" }],
+        args: [{ text: "test text" }],
         workflowId: "test",
         taskQueue,
       })
