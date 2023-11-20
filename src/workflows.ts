@@ -1,9 +1,8 @@
 import * as workflow from "@temporalio/workflow"
 import type * as activities from "./activities"
-import {EmbeddingGeneratorParam} from "./interfaces"
+import { EmbeddingGeneratorParam } from "./interfaces"
 
-
-const {generateEmbedding} = workflow.proxyActivities<typeof activities>({
+const { generateEmbedding } = workflow.proxyActivities<typeof activities>({
   startToCloseTimeout: "1 minute",
 })
 

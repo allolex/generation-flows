@@ -1,8 +1,8 @@
-import {TestWorkflowEnvironment} from "@temporalio/testing"
-import {before, describe, it} from "mocha"
-import {Worker} from "@temporalio/worker"
-import {expect} from "chai"
-import {embedding} from "../workflows"
+import { TestWorkflowEnvironment } from "@temporalio/testing"
+import { before, describe, it } from "mocha"
+import { Worker } from "@temporalio/worker"
+import { expect } from "chai"
+import { embedding } from "../workflows"
 import * as activities from "../activities"
 
 describe("Embedding workflow", () => {
@@ -17,7 +17,7 @@ describe("Embedding workflow", () => {
   })
 
   it("successfully completes the Workflow", async () => {
-    const {client, nativeConnection} = testEnv
+    const { client, nativeConnection } = testEnv
     const taskQueue = "test"
 
     const worker = await Worker.create({
@@ -29,7 +29,7 @@ describe("Embedding workflow", () => {
 
     const result = await worker.runUntil(
       client.workflow.execute(embedding, {
-        args: [{text: "test text", apiKey: "key"}],
+        args: [{ text: "test text", apiKey: "key" }],
         workflowId: "test",
         taskQueue,
       })

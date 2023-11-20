@@ -1,6 +1,6 @@
-import {NativeConnection, Worker} from "@temporalio/worker"
+import { NativeConnection, Worker } from "@temporalio/worker"
 import * as activities from "./activities"
-import {EmbeddingsQueue} from "./queues"
+import { EmbeddingsQueue } from "./queues"
 
 async function run() {
   // Worker code uses `@temporalio/worker.NativeConnection`.
